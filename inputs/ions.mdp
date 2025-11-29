@@ -1,0 +1,27 @@
+; ions.mdp - parameter file for generating ions.tpr (energy minimization)
+
+integrator          = steep       ; simple steepest descent
+emtol               = 1000.0      ; stop if Fmax < 1000 kJ/mol/nm
+emstep              = 0.01
+nsteps              = 5000        ; more than enough for ions.tpr generation
+
+; Neighborsearching and cutoffs
+cutoff-scheme       = Verlet
+nstlist             = 10
+rlist               = 1.0
+rcoulomb            = 1.0
+rvdw                = 1.0
+
+; Electrostatics
+coulombtype         = PME
+pme_order           = 4
+fourierspacing      = 0.12
+
+; Constraints (consistent with later MD)
+constraints         = h-bonds
+constraint_algorithm = lincs
+lincs_iter          = 1
+lincs_order         = 4
+
+; Periodic boundary conditions
+pbc                 = xyz

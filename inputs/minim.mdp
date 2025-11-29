@@ -1,0 +1,31 @@
+; minim.mdp - parameter file for energy minimization for TPH2 catalytic domain (apo)
+
+integrator          = steep        ; Steepest descent minimization
+emtol               = 500.0        ; Stop when Fmax < 500 kJ/mol/nm
+emstep              = 0.01         ; Energy step size
+nsteps              = 50000        ; Enough to converge cleanly
+
+; Output control
+nstenergy           = 100
+energygrps          = System
+
+; Neighbor searching
+cutoff-scheme       = Verlet
+nstlist             = 10
+rlist               = 1.0
+
+; Electrostatics / VDW
+coulombtype         = PME
+rcoulomb            = 1.0
+rvdw                = 1.0
+pme_order           = 4
+fourierspacing      = 0.12
+
+; Constraints
+constraints          = h-bonds
+constraint_algorithm = lincs
+lincs_iter           = 1
+lincs_order          = 4
+
+; Boundary conditions
+pbc                 = xyz
